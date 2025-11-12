@@ -10,15 +10,22 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Rock Paper Scissors")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .bold()
         }
-        .padding()
     }
 }
-
+struct SelectionColumns: View {
+    let color: Color
+    let image: Image
+    var body: some View {
+        ZStack {
+            Image ("\(image)")
+        }
+    }
+}
 #Preview {
     ContentView()
 }
