@@ -11,10 +11,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Rock Paper Scissors")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .bold()
+                CustomText(words: "Rock Paper Scissors")
                 Text("Player 1 Turn")
                     .font(.title2)
                     .fontWeight(.heavy)
@@ -23,16 +20,19 @@ struct ContentView: View {
                     SelectionColumns(image: "paper", width: 110, height: 150)
                     SelectionColumns(image: "scissor", width: 150, height: 100)
                 }
+                NavigationLink("Directions", destination: InstructionsView())
+                    .font(.headline)
+                    .padding()
             }
-            NavigationLink("Directions", destination: InstructionsView())
         }
     }
     struct CustomText: View {
         let words: String
         var body: some View {
             Text("\(words)")
-                .font(.default,)
-                .fontWeight(.light)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .bold()
         }
     }
     struct SelectionColumns: View {
@@ -41,18 +41,25 @@ struct ContentView: View {
         let height: Int
         var body: some View {
             ZStack {
-                
                 Image("\(image)").resizable().frame(width: CGFloat(width), height: CGFloat(height)).foregroundColor(.clear)
-                //ask mr.B about CGFloat
+                //how can I put in integers for the width and height
             }
             .frame(width: 100, height: 100)
         }
     }
     struct InstructionsView: View {
         var body: some View {
-            VStack {
-                Text("In Rock Paper Scissors, you compete against another person. Rock beats scissors, scissors beat paper, and paper beats rock.")
-                Text("Player 1 will make your move first. You can choose to play Rock, Paper, or Scissors. After Player 1 decides their move, ")
+            VStack (alignment: .leading){
+                Text("In Rock Paper Scissors, you compete against another person.")
+                    .padding()
+                Text("Rock beats scissors, scissors beat paper, and paper beats rock.")
+                    .padding()
+                Text("Player 1 will make your move first. You can choose to play Rock, Paper, or Scissors.")
+                    .padding()
+                Text("After Player 1 decides, press (placeholder) and pass the phone to Player 2.")
+                    .padding()
+                Text("Player 2 will then decide their move, and press (placeholder) to decide the winner.")
+                    .padding()
             }
         }
     }
