@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Player2: View {
+    @State private var GameOver = false
+    @State private var Player1 = Int()
+    @State private var Player2 = Int()
     var body: some View {
         NavigationView {
             VStack{
@@ -20,15 +23,18 @@ struct Player2: View {
                     ImageColumns(image: "scissor", width: 150, height: 100)
                     ImageColumns(image: "paper", width: 110, height: 150)
                 }
-                HStack (alignment: .center) {
-                    NavigationLink("Rock", destination: GameResult())
-                        .padding()
-                    NavigationLink("Scissors", destination: GameResult())
-                        .padding()
-                    NavigationLink("Paper", destination: GameResult())
-                        .padding()
-                }
             }
+        }
+    }
+    func GameResult (Player1 = Int, player2 = Int) -> String {
+        if Player1 == player2 {
+            return "It's a draw!"
+        }
+        if (Player1 - player2 + 3) % 3 == 1 {
+            return "Player 1 wins"
+        }
+        else {
+            return "Player 2 wins"
         }
     }
 }

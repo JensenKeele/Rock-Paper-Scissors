@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var player1Choice = ""
-    @State private var player2Choice = ""
+    @State private var player1 = ""
+    @State private var player2 = ""
     var body: some View {
         NavigationView {
             VStack {
@@ -69,9 +69,9 @@ struct ContentView: View {
                     .padding()
                 Text("Rock beats scissors, scissors beat paper, and paper beats rock.")
                     .padding()
-                Text("Player 1 will make their move first. They can choose to play Rock, Paper, or Scissors.")
+                Text("Player 1 will make their move first. They can choose to play rock, paper, or scissors.")
                     .padding()
-                Text("After Player 1 decides, press (placeholder) and pass the phone to Player 2.")
+                Text("After Player 1 decides, pass the phone to Player 2.")
                     .padding()
                 Text("Player 2 will then decide their move, and press (placeholder) to decide the winner.")
                     .padding()
