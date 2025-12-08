@@ -26,11 +26,11 @@ struct Player2: View {
             }
         }
     }
-    func GameResult (Player1 = Int, player2 = Int) -> String {
-        if Player1 == player2 {
+    func gameResult ( Player1: Int, Player2: Int) -> String {
+        if Player1 == Player2 {
             return "It's a draw!"
         }
-        if (Player1 - player2 + 3) % 3 == 1 {
+        if (Player1 - Player2 + 3) % 3 == 1 {
             return "Player 1 wins"
         }
         else {
