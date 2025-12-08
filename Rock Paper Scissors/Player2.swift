@@ -14,14 +14,14 @@ struct Player2: View {
     var body: some View {
         NavigationView {
             VStack{
-                customText(words: "Rock Paper Scissors")
+                CustomText(words: "Rock Paper Scissors")
                 Text("Player 2 Turn")
                     .font(.title2)
                     .fontWeight(.heavy)
                 HStack {
-                    imageColumns(image: "rock", width: 110, height: 150)
-                    imageColumns(image: "scissor", width: 150, height: 100)
-                    imageColumns(image: "paper", width: 110, height: 150)
+                    ImageColumns(image: "rock", width: 110, height: 150)
+                    ImageColumns(image: "scissor", width: 150, height: 100)
+                    ImageColumns(image: "paper", width: 110, height: 150)
                 }
                 HStack {
                     
@@ -47,10 +47,8 @@ struct Player2: View {
         }
     }
 }
-struct button: View {
-    
-}
-struct customText: View {
+
+struct CustomText: View {
     let words: String
     var body: some View {
         Text("\(words)")
@@ -60,7 +58,7 @@ struct customText: View {
     }
 }
 
-struct imageColumns: View {
+struct ImageColumns: View {
     let image: String
     let width: Int
     let height: Int

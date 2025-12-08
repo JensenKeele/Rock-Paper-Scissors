@@ -11,14 +11,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                customText(words: "Rock Paper Scissors")
+                CustomText(words: "Rock Paper Scissors")
                 Text("Player 1 Turn")
                     .font(.title2)
                     .fontWeight(.heavy)
                 HStack {
-                    imageColumns(image: "rock", width: 110, height: 150)
-                    imageColumns(image: "scissor", width: 150, height: 100)
-                    imageColumns(image: "paper", width: 110, height: 150)
+                    ImageColumns(image: "rock", width: 110, height: 150)
+                    ImageColumns(image: "scissor", width: 150, height: 100)
+                    ImageColumns(image: "paper", width: 110, height: 150)
                 }
                 HStack (alignment: .center){
                     NavigationLink("Rock", destination: Player2(Player1: 0))
@@ -28,13 +28,13 @@ struct ContentView: View {
                     NavigationLink("Paper", destination: Player2(Player1: 1))
                         .padding()
                 }
-                NavigationLink("Directions", destination: instructionsView())
+                NavigationLink("Directions", destination: InstructionsView())
                     .font(.headline)
                     .padding()
             }
         }
     }
-    struct customText: View {
+    struct CustomText: View {
         let words: String
         var body: some View {
             Text("\(words)")
@@ -43,7 +43,7 @@ struct ContentView: View {
                 .bold()
         }
     }
-    struct imageColumns: View {
+    struct ImageColumns: View {
         let image: String
         let width: Int
         let height: Int
@@ -57,9 +57,9 @@ struct ContentView: View {
             .frame(width: 100, height: 100)
         }
     }
-    struct instructionsView: View {
+    struct InstructionsView: View {
         var body: some View {
-            customText(words: "How to Play")
+            CustomText(words: "How to Play")
                 .padding()
             VStack (alignment: .leading){
                 Text("In Rock Paper Scissors, you compete against another person.")
