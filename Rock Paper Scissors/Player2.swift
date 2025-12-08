@@ -23,6 +23,11 @@ struct Player2: View {
                     ImageColumns(image: "scissor", width: 150, height: 100)
                     ImageColumns(image: "paper", width: 110, height: 150)
                 }
+                .alert(isPresented: $GameOver, content: {
+                    Alert(title: Text("you won the game!"), dismissButton:
+                            .destructive(Text("Play again?"), action: {
+                            }))
+                })
             }
         }
     }
@@ -32,12 +37,14 @@ struct Player2: View {
         }
         if (Player1 - Player2 + 3) % 3 == 1 {
             return "Player 1 wins"
+            //what is a formula that would decide a winner in rock paper scissors if Rock = 0, Paper = 1, Scissors = 2
         }
         else {
             return "Player 2 wins"
         }
     }
 }
+
 struct CustomText: View {
     let words: String
     var body: some View {
@@ -47,6 +54,7 @@ struct CustomText: View {
             .bold()
     }
 }
+
 struct ImageColumns: View {
     let image: String
     let width: Int
@@ -61,6 +69,7 @@ struct ImageColumns: View {
         .frame(width: 100, height: 100)
     }
 }
+
 #Preview {
     Player2()
 }
