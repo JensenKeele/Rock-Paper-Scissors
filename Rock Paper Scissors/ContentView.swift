@@ -8,36 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var player1 = ""
-    @State private var player2 = ""
     var body: some View {
         NavigationView {
             VStack {
-                CustomText(words: "Rock Paper Scissors")
+                customText(words: "Rock Paper Scissors")
                 Text("Player 1 Turn")
                     .font(.title2)
                     .fontWeight(.heavy)
                 HStack {
-                    ImageColumns(image: "rock", width: 110, height: 150)
-                    ImageColumns(image: "scissor", width: 150, height: 100)
-                    ImageColumns(image: "paper", width: 110, height: 150)
+                    imageColumns(image: "rock", width: 110, height: 150)
+                    imageColumns(image: "scissor", width: 150, height: 100)
+                    imageColumns(image: "paper", width: 110, height: 150)
                 }
                 HStack (alignment: .center){
-                    NavigationLink("Rock", destination: Player2())
+                    NavigationLink("Rock", destination: Player2(Player1: 0))
                         .padding()
-                    NavigationLink("Scissors", destination: Player2())
+                    NavigationLink("Scissors", destination: Player2(Player1: 2))
                         .padding()
-                    NavigationLink("Paper", destination: Player2())
+                    NavigationLink("Paper", destination: Player2(Player1: 1))
                         .padding()
                 }
-                
-                NavigationLink("Directions", destination: InstructionsView())
+                NavigationLink("Directions", destination: instructionsView())
                     .font(.headline)
                     .padding()
             }
         }
     }
-    struct CustomText: View {
+    struct customText: View {
         let words: String
         var body: some View {
             Text("\(words)")
@@ -46,7 +43,7 @@ struct ContentView: View {
                 .bold()
         }
     }
-    struct ImageColumns: View {
+    struct imageColumns: View {
         let image: String
         let width: Int
         let height: Int
@@ -60,9 +57,9 @@ struct ContentView: View {
             .frame(width: 100, height: 100)
         }
     }
-    struct InstructionsView: View {
+    struct instructionsView: View {
         var body: some View {
-            CustomText(words: "How to Play")
+            customText(words: "How to Play")
                 .padding()
             VStack (alignment: .leading){
                 Text("In Rock Paper Scissors, you compete against another person.")

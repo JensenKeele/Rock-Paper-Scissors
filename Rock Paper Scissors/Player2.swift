@@ -8,30 +8,33 @@
 import SwiftUI
 
 struct Player2: View {
+    let Player1: Int
     @State private var GameOver = false
-    @State private var Player1 = Int()
-    @State private var Player2 = Int()
+    @State private var Player2 = 0
     var body: some View {
         NavigationView {
             VStack{
-                CustomText(words: "Rock Paper Scissors")
+                customText(words: "Rock Paper Scissors")
                 Text("Player 2 Turn")
                     .font(.title2)
                     .fontWeight(.heavy)
                 HStack {
-                    ImageColumns(image: "rock", width: 110, height: 150)
-                    ImageColumns(image: "scissor", width: 150, height: 100)
-                    ImageColumns(image: "paper", width: 110, height: 150)
+                    imageColumns(image: "rock", width: 110, height: 150)
+                    imageColumns(image: "scissor", width: 150, height: 100)
+                    imageColumns(image: "paper", width: 110, height: 150)
+                }
+                HStack {
+                    
                 }
                 .alert(isPresented: $GameOver, content: {
-                    Alert(title: Text("you won the game!"), dismissButton:
+                    Alert(title: Text("You won!"), dismissButton:
                             .destructive(Text("Play again?"), action: {
                             }))
                 })
             }
         }
     }
-    func gameResult ( Player1: Int, Player2: Int) -> String {
+    func gameResult (Player1: Int, Player2: Int) -> String {
         if Player1 == Player2 {
             return "It's a draw!"
         }
@@ -44,8 +47,10 @@ struct Player2: View {
         }
     }
 }
-
-struct CustomText: View {
+struct button: View {
+    
+}
+struct customText: View {
     let words: String
     var body: some View {
         Text("\(words)")
@@ -55,7 +60,7 @@ struct CustomText: View {
     }
 }
 
-struct ImageColumns: View {
+struct imageColumns: View {
     let image: String
     let width: Int
     let height: Int
@@ -71,5 +76,5 @@ struct ImageColumns: View {
 }
 
 #Preview {
-    Player2()
+    Player2(Player1: 0)
 }
