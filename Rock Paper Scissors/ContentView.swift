@@ -70,7 +70,7 @@ struct ContentView: View {
                     .padding()
                 Text("After Player 1 decides, pass the phone to Player 2.")
                     .padding()
-                Text("Player 2 will then decide their move, and press (placeholder) to decide the winner.")
+                Text("Player 2 will then decide their move, and a winner will be decided with a pop-up.")
                     .padding()
             }
         }

@@ -24,10 +24,25 @@ struct Player2: View {
                     ImageColumns(image: "paper", width: 110, height: 150)
                 }
                 HStack {
+                    Button("Rock") {
+                        Player2 = 0
+                    }
+                    .padding()
+                    Button("Scissors") {
+                        Player2 = 2
+                    }
+                    .padding()
+                    Button("Paper") {
+                        Player2 = 1
+                    }
+                    .padding()
+                }
+                Button("Reset") {
                     
                 }
                 .alert(isPresented: $GameOver, content: {
-                    Alert(title: Text("You won!"), dismissButton:
+                    Alert(title: Text("\(String(describing: gameResult))"), dismissButton:
+                            //how can i make this show the game results function?
                             .destructive(Text("Play again?"), action: {
                             }))
                 })
@@ -36,18 +51,25 @@ struct Player2: View {
     }
     func gameResult (Player1: Int, Player2: Int) -> String {
         if Player1 == Player2 {
+            GameOver = true
             return "It's a draw!"
         }
         if (Player1 - Player2 + 3) % 3 == 1 {
-            return "Player 1 wins"
+            GameOver = true
+            return "Player 1 wins!"
             //what is a formula that would decide a winner in rock paper scissors if Rock = 0, Paper = 1, Scissors = 2
         }
         else {
-            return "Player 2 wins"
+            GameOver = true
+            return "Player 2 wins!"
         }
     }
 }
+struct buttonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
 
+    }
+}
 struct CustomText: View {
     let words: String
     var body: some View {
