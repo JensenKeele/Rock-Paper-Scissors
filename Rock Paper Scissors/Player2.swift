@@ -11,6 +11,7 @@ struct Player2: View {
     let Player1: Int
     @State private var GameOver = false
     @State private var Player2 = 0
+    @State private var result = ""
     var body: some View {
         NavigationView {
             VStack{
@@ -26,22 +27,25 @@ struct Player2: View {
                 HStack {
                     Button("Rock") {
                         Player2 = 0
+                        result = gameResult(Player1: Player1, Player2: Player2)
                     }
                     .padding()
                     Button("Scissors") {
                         Player2 = 2
+                        result = gameResult(Player1: Player1, Player2: Player2)
                     }
                     .padding()
                     Button("Paper") {
                         Player2 = 1
+                        result = gameResult(Player1: Player1, Player2: Player2)
                     }
                     .padding()
                 }
                 Button("Reset") {
-                    
+                    GameOver = false
                 }
                 .alert(isPresented: $GameOver, content: {
-                    Alert(title: Text("\(String(describing: gameResult))"), dismissButton:
+                    Alert(title: Text("\(result)"), dismissButton:
                             //how can i make this show the game results function?
                             .destructive(Text("Play again?"), action: {
                             }))
@@ -65,11 +69,7 @@ struct Player2: View {
         }
     }
 }
-struct buttonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
 
-    }
-}
 struct CustomText: View {
     let words: String
     var body: some View {
