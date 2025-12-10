@@ -68,9 +68,13 @@ struct ContentView: View {
                     .padding()
                 Text("Player 1 will make their move first. They can choose to play rock, paper, or scissors.")
                     .padding()
+                Text("To decide your move press on the text below the images.")
+                    .padding()
                 Text("After Player 1 decides, pass the phone to Player 2.")
                     .padding()
                 Text("Player 2 will then decide their move, and a winner will be decided with a pop-up.")
+                    .padding()
+                Text("To play again, press the reset button to take you back to player 1's turn.")
                     .padding()
             }
         }

@@ -28,6 +28,7 @@ struct Player2: View {
                     Button("Rock") {
                         Player2 = 0
                         result = gameResult(Player1: Player1, Player2: Player2)
+                        //how can i make the alert show the result of the gameResults function?
                     }
                     .padding()
                     Button("Scissors") {
@@ -41,13 +42,11 @@ struct Player2: View {
                     }
                     .padding()
                 }
-                Button("Reset") {
-                    GameOver = false
-                }
+                NavigationLink("Reset", destination: ContentView())
                 .alert(isPresented: $GameOver, content: {
                     Alert(title: Text("\(result)"), dismissButton:
-                            //how can i make this show the game results function?
-                            .destructive(Text("Play again?"), action: {
+                            //how can i make the alert show the result of the gameResults function?
+                            .destructive(Text("Rematch?"), action: {
                             }))
                 })
             }
