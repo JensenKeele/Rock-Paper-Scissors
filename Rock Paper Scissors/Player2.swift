@@ -43,12 +43,12 @@ struct Player2: View {
                     .padding()
                 }
                 NavigationLink("Reset", destination: ContentView())
-                .alert(isPresented: $GameOver, content: {
-                    Alert(title: Text("\(result)"), dismissButton:
-                            //how can i make the alert show the result of the gameResults function?
+                    .alert(isPresented: $GameOver, content: {
+                        Alert(title: Text("\(result)"), dismissButton:
+                                //how can i make the alert show the result of the gameResults function?
                             .destructive(Text("Rematch?"), action: {
                             }))
-                })
+                    })
             }
         }
     }

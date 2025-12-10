@@ -34,6 +34,7 @@ struct ContentView: View {
             }
         }
     }
+    
     struct CustomText: View {
         let words: String
         var body: some View {
@@ -43,6 +44,7 @@ struct ContentView: View {
                 .bold()
         }
     }
+    
     struct ImageColumns: View {
         let image: String
         let width: Int
@@ -57,6 +59,7 @@ struct ContentView: View {
             .frame(width: 100, height: 100)
         }
     }
+    
     struct InstructionsView: View {
         var body: some View {
             CustomText(words: "How to Play")
@@ -80,6 +83,7 @@ struct ContentView: View {
         }
     }
 }
+
 #Preview {
     ContentView()
 }
