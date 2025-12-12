@@ -10,27 +10,31 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            VStack {
-                CustomText(words: "Rock Paper Scissors")
-                Text("Player 1 Turn")
-                    .font(.title2)
-                    .fontWeight(.heavy)
-                HStack {
-                    ImageColumns(image: "rock", width: 110, height: 150)
-                    ImageColumns(image: "scissor", width: 150, height: 100)
-                    ImageColumns(image: "paper", width: 110, height: 150)
+            ZStack {
+                Color.teal.opacity(0.3)
+                    .ignoresSafeArea()
+                VStack {
+                    CustomText(words: "Rock Paper Scissors")
+                    Text("Player 1 Turn")
+                        .font(.title2)
+                        .fontWeight(.heavy)
+                    HStack {
+                        ImageColumns(image: "rock", width: 110, height: 150)
+                        ImageColumns(image: "scissor", width: 150, height: 100)
+                        ImageColumns(image: "paper", width: 110, height: 150)
+                    }
+                    HStack (alignment: .center){
+                        NavigationLink("Rock", destination: Player2(Player1: 0))
+                            .padding()
+                        NavigationLink("Scissors", destination: Player2(Player1: 2))
+                            .padding()
+                        NavigationLink("Paper", destination: Player2(Player1: 1))
+                            .padding()
+                    }
+                    NavigationLink("Directions", destination: InstructionsView())
+                        .font(.headline)
+                        .padding()
                 }
-                HStack (alignment: .center){
-                    NavigationLink("Rock", destination: Player2(Player1: 0))
-                        .padding()
-                    NavigationLink("Scissors", destination: Player2(Player1: 2))
-                        .padding()
-                    NavigationLink("Paper", destination: Player2(Player1: 1))
-                        .padding()
-                }
-                NavigationLink("Directions", destination: InstructionsView())
-                    .font(.headline)
-                    .padding()
             }
         }
     }

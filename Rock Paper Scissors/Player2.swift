@@ -14,41 +14,45 @@ struct Player2: View {
     @State private var result = ""
     var body: some View {
         NavigationView {
-            VStack{
-                CustomText(words: "Rock Paper Scissors")
-                Text("Player 2 Turn")
-                    .font(.title2)
-                    .fontWeight(.heavy)
-                HStack {
-                    ImageColumns(image: "rock", width: 110, height: 150)
-                    ImageColumns(image: "scissor", width: 150, height: 100)
-                    ImageColumns(image: "paper", width: 110, height: 150)
+            ZStack {
+                Color.teal.opacity(0.3)
+                    .ignoresSafeArea()
+                VStack{
+                    CustomText(words: "Rock Paper Scissors")
+                    Text("Player 2 Turn")
+                        .font(.title2)
+                        .fontWeight(.heavy)
+                    HStack {
+                        ImageColumns(image: "rock", width: 110, height: 150)
+                        ImageColumns(image: "scissor", width: 150, height: 100)
+                        ImageColumns(image: "paper", width: 110, height: 150)
+                    }
+                    HStack {
+                        Button("Rock") {
+                            Player2 = 0
+                            result = gameResult(Player1: Player1, Player2: Player2)
+                            //how can i make the alert show the result of the gameResults function?
+                        }
+                        .padding()
+                        Button("Scissors") {
+                            Player2 = 2
+                            result = gameResult(Player1: Player1, Player2: Player2)
+                        }
+                        .padding()
+                        Button("Paper") {
+                            Player2 = 1
+                            result = gameResult(Player1: Player1, Player2: Player2)
+                        }
+                        .padding()
+                    }
+                    NavigationLink("Reset", destination: ContentView())
+                        .alert(isPresented: $GameOver, content: {
+                            Alert(title: Text("\(result)"), dismissButton:
+                                    //how can i make the alert show the result of the gameResults function?
+                                .destructive(Text("Rematch?"), action: {
+                                }))
+                        })
                 }
-                HStack {
-                    Button("Rock") {
-                        Player2 = 0
-                        result = gameResult(Player1: Player1, Player2: Player2)
-                        //how can i make the alert show the result of the gameResults function?
-                    }
-                    .padding()
-                    Button("Scissors") {
-                        Player2 = 2
-                        result = gameResult(Player1: Player1, Player2: Player2)
-                    }
-                    .padding()
-                    Button("Paper") {
-                        Player2 = 1
-                        result = gameResult(Player1: Player1, Player2: Player2)
-                    }
-                    .padding()
-                }
-                NavigationLink("Reset", destination: ContentView())
-                    .alert(isPresented: $GameOver, content: {
-                        Alert(title: Text("\(result)"), dismissButton:
-                                //how can i make the alert show the result of the gameResults function?
-                            .destructive(Text("Rematch?"), action: {
-                            }))
-                    })
             }
         }
     }
